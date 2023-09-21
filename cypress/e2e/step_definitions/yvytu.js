@@ -52,3 +52,10 @@ Then(`el botón {string} no se visualiza`, (btnName) => {
 Then(`el botón {string} se visualiza`, (btnName) => {
   yvytuHome.getGenericBtn().contains(btnName).should("be.visible");
 });
+
+Then(`visualiza el link {string} redirecciona a {string}`, (btnName, link) => {
+  yvytuHome
+    .getGenericLink()
+    .contains(btnName)
+    .should("have.attr", "href", link);
+});

@@ -22,6 +22,10 @@ class Yvytu {
   getGenericBtn() {
     return cy.get("button");
   }
+
+  getGenericLink() {
+    return cy.get("a");
+  }
 }
 
 module.exports = new Yvytu();

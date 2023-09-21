@@ -18,3 +18,12 @@ Feature: Home Yvytu
     When el usuario presiona el botón "Ir arriba"
     Then visualiza en el header los botones "LA RESERVA, CABAÑAS, COMO LLEGAR, CONTACTO, DONÁ"
     And el botón "Ir arriba" no se visualiza
+
+  Scenario: Verificar comportamiento del botón /reservar yvytu
+    Given que un usuario está en la página de "Yvytu"
+    Then visualiza el link "Reservar" redirecciona a "https://wa.me/5493757454400"
+    And visualiza el link "reserva_yvytu" redirecciona a "https://www.instagram.com/reserva_yvytu/"
+    And visualiza el link "Enviar mensaje" redirecciona a "https://wa.me/5493757454400"
+
+
+
