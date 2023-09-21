@@ -26,4 +26,18 @@ Feature: Home Yvytu
     And visualiza el link "Enviar mensaje" redirecciona a "https://wa.me/5493757454400"
 
 
+  Scenario: Verificar cabañas
+    Given que un usuario está en la página de "Yvytu"
+    When el usuario hace scroll hasta "Nuestras cabañas"
+    Then se verifica que la cabaña "1" llamada "Yaguareté" posee las siguientes caracteristicas "Para 4 personas, 2 habitaciones, Baño con ducha, Ropa de cama, Wi-fi, Aire acondicionado"
+    And se verifica que la cabaña "2" llamada "Arasari" posee las siguientes caracteristicas "Para 4 personas, 2 habitaciones, Baño con ducha, Ropa de cama, Wi-fi"
 
+
+  Scenario Outline: Verificar cabañas <num>: <nombreCab>
+    Given que un usuario está en la página de "Yvytu"
+    When el usuario hace scroll hasta "Nuestras cabañas"
+    Then se verifica que la cabaña "<num>" llamada "<nombreCab>" posee las siguientes caracteristicas "<item>"
+    Examples:
+      | num | nombreCab | item                                                                                     |
+      | 1   | Yaguareté | Para 4 personas, 2 habitaciones, Baño con ducha, Ropa de cama, Wi-fi, Aire acondicionado |
+      | 2   | Arasari   | Para 4 personas, 2 habitaciones, Baño con ducha, Ropa de cama, Wi-fi                     |

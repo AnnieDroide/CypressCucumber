@@ -66,6 +66,7 @@ Feature: Ejemplo de Uso de Tablas
             | tech     | uso            |
             | cypress  | e2e, servicios |
             | selenium | varios         |
-    @focus
-    Scenario Outline:
+
+
+
 
