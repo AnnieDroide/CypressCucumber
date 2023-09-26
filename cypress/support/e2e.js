@@ -19,6 +19,8 @@ import "./commands";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+//XHR facilita lectura de los test en Cypress
+
 if (Cypress.config("hideXHRInCommandLog")) {
   const app = window.top;
   if (
