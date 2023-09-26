@@ -8,6 +8,7 @@ const createEsbuildPlugin =
 module.exports = defineConfig({
   env: { TAGS: "not @ignore" },
   e2e: {
+    hideXHRInCommandLog: true,
     specPattern: "cypress/e2e/features/**/*.feature",
     async setupNodeEvents(on, config) {
       const bundler = createBundler({
