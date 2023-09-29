@@ -19,5 +19,9 @@ Feature: Test de la página de Eden
             | mes    | febrero           |
             | hora   | 14:00             |
 
-
-
+    @focus
+    Scenario: Verificar los precios de 1 cuarteto
+        Given que un usuario está en la página de "Eden"
+        When presiona el botón del header "CUARTETOS"
+        And presiona el botón Ver de "El Loco Amato"
+        Then el precio que se visualiza tiene el formato correcto
