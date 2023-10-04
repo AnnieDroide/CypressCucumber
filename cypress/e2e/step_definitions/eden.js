@@ -15,16 +15,54 @@ When(`presiona el botón del header {string}`, (btnHeader) => {
 });
 
 When(`presiona el botón Ver de {string}`, (showName) => {
-  edenHome
-    .getEventBlock()
-    .contains(showName)
-    .parent()
-    .parent()
-    .parent()
-    .find("a")
-    .last()
-    .click();
+  cy.intercept("GET", "FUNC022273").as("getShow");
+  if (isNaN(showName)) {
+    edenHome
+      .getEventBlock()
+      .contains(showName)
+      .parent()
+      .parent()
+      .find("a")
+      .last()
+      .click();
+  } else {
+    edenHome
+      .getEventBlock()
+      .eq(showName - 1)
+      .parent()
+      .parent()
+      .find("a")
+      .last()
+      .click();
+  }
+  cy.wait("@getShow").then((respuesta) => {
+    cy.writeFile("cypress/fixtures/intercept/show.json", respuesta);
+  });
 });
+Then(
+  `el precio que se visualiza tiene el formato correcto validado con la respuesta del Intercept`,
+  () => {
+    cy.fixture("intercept/show.json").then((resp) => {
+      const precios = resp.response.body.Precios;
+
+      edenHome.getEventprice().each((precioShow, inx) => {
+        const precioUb = precios[inx];
+        const precioShows = `${precioUb.PrecioEntrada} + ${precioUb.ServiceCharge}`;
+
+        cy.wrap(precioShow).should("contain.text", precioShows);
+      });
+
+      /*cy.log(`El body es: ${JSON.stringify(precios)}`);
+      edenHome.getEventprice().each((precioShow, inx) => {
+        cy.wrap(precioShow).should(
+          "contain.text",
+          `${precios[inx].PrecioEntrada} + ${precios[inx].ServiceCharge}`
+        );
+        //$ 1.500,00 + $ 180,00
+      });*/
+    });
+  }
+);
 
 Then(`el precio que se visualiza tiene el formato correcto`, () => {
   const precio = new RegExp(
