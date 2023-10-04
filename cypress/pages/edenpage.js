@@ -19,6 +19,10 @@ class Eden {
   getEventprice() {
     return cy.get('[class="col-12 mb-1"]');
   }
+
+  getEventLocation() {
+    return cy.get(".col-12 tbody");
+  }
 }
 
 module.exports = new Eden();

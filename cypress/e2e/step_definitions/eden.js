@@ -64,6 +64,29 @@ Then(
   }
 );
 
+Then(
+  `el precio que se visualiza tiene el formato correcto validado con el servicio`,
+  () => {
+    cy.request({
+      method: "GET",
+      url: "https://edenapi.edenentradas.com.ar/edenventarestapi/api/contenido/funcion/FUNC022273",
+    }).then((resp) => {
+      const precios = resp.body.Precios;
+
+      edenHome.getEventprice().each((precioShow, inx) => {
+        const precioUb = precios[inx];
+        const precioShows = `${precioUb.PrecioEntrada} + ${precioUb.ServiceCharge}`;
+        edenHome
+          .getEventLocation()
+          .eq(inx)
+          .should("contain.text", precioUb.Nombre);
+
+        cy.wrap(precioShow).should("contain.text", precioShows);
+      });
+    });
+  }
+);
+
 Then(`el precio que se visualiza tiene el formato correcto`, () => {
   const precio = new RegExp(
     "\\$ [0-9]{1,3}.[0-9]{3},[0-9]{2} \\+ \\$ [0-9]{1,3}.[0-9]{2}"

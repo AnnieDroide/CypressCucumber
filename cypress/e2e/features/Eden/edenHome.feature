@@ -36,3 +36,11 @@ Feature: Test de la página de Eden
     Scenario: Verificar precios usando Intercept (Teatros)
         Given que un usuario está en la página de "Eden"
         When presiona el botón del header "TEATROS"
+
+
+    Scenario: Verificar precios usando llamada el servicio
+        Given que un usuario está en la página de "Eden"
+        When presiona el botón del header "CUARTETOS"
+        And presiona el botón Ver de "1"
+        Then el precio que se visualiza tiene el formato correcto validado con el servicio
+
