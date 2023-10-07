@@ -54,7 +54,7 @@ Para configurarlo, se deben seguir los siguientes pasos:
 
 # CypressCucumber
 
-Proyecto básico Cypress con Cucumber-Gherking.
+Proyecto básico Cypress con Cucumber-Gherking
 
 ## Reporte
 
