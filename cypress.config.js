@@ -12,7 +12,24 @@ module.exports = defineConfig({
     EDEN_URL: "https://www.edenentradas.com.ar/",
     CLARO_URL: "https://tienda.claro.com.ar/",
     DEXTER_URL: "https://www.dexter.com.ar/",
+    STORE_URL: "https://automationteststore.com/",
+
+    //Configuración de los usuarios y passwords
+
+    users: [
+      {
+        user: "AnnieDroid",
+        pass: "tryme"
+        
+      },
+      {
+        user: "agusDarwoft",
+        pass: "automation"
+      }
+    ]
   },
+
+  
 
   e2e: {
     hideXHRInCommandLog: true,
