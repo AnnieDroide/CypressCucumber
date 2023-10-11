@@ -5,3 +5,4 @@ Feature: Test de la página de Store Automation
         When cuando el usuario presiona "Login or register" en el menu principal
         And completa usuario y password "1"
         Then se verifica que el titulo principal en "My Account"
+        
